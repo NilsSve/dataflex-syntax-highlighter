@@ -1,0 +1,74 @@
+{
+  "name": "DataFlex",
+  "scopeName": "source.dataflex",
+  "fileTypes": [
+    "src",
+    "pkg",
+    "vw",
+    "bp",
+    "wo",
+    "dg",
+    "sl",
+    "inc",
+    "rv",
+    "dd"
+  ],
+  "patterns": [
+    {
+      "name": "comment.line.asterisk.dataflex",
+      "match": "^\\s*\\*.*$"
+    },
+    {
+      "name": "comment.line.double-slash.dataflex",
+      "match": "//.*$"
+    },
+    {
+      "name": "string.quoted.double.dataflex",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.dataflex",
+          "match": "\\\\."
+        }
+      ]
+    },
+    {
+      "name": "constant.numeric.dataflex",
+      "match": "\\b\\d+(\\.\\d+)?\\b"
+    },
+    {
+      "name": "keyword.control.dataflex",
+      "match": "\\b(If|Else|Repeat|Until|Begin|End|Function|Procedure|Move|Get|Set|Send|To|Loop|While|Forward|Case|Of|On|Do|For|Break|Return)\\b"
+    },
+    {
+      "name": "storage.type.dataflex",
+      "match": "\\b(String|Integer|Number|Date|Handle|Boolean|Pointer|UChar|WString|Variant|RowId)\\b"
+    },
+    {
+      "name": "entity.name.function.dataflex",
+      "match": "\\b(Function|Procedure)\\s+\\w+"
+    },
+    {
+      "name": "meta.embedded.sql.dataflex",
+      "begin": "(?i)\\b(SQL|EXEC|SELECT|INSERT|UPDATE|DELETE)\\b",
+      "end": ";",
+      "patterns": [
+        {
+          "name": "keyword.other.sql",
+          "match": "\\b(SELECT|FROM|WHERE|AND|OR|INNER|JOIN|LEFT|RIGHT|ON|GROUP|BY|ORDER|INSERT|INTO|VALUES|UPDATE|SET|DELETE|EXEC)\\b"
+        },
+        {
+          "name": "string.quoted.single.sql",
+          "match": "'[^']*'"
+        },
+        {
+          "name": "constant.numeric.sql",
+          "match": "\\b\\d+(\\.\\d+)?\\b"
+        }
+      ]
+    }
+  ],
+  "repository": {},
+  "uuid": "d2c3f5c0-bd8e-4c8a-9962-3c17d9cfaa54"
+}

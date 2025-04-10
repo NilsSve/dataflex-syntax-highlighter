@@ -1,0 +1,27 @@
+{
+  "name": "dataflex-syntax-highlighter",
+  "displayName": "DataFlex Syntax",
+  "description": "Syntax highlighting for the DataFlex programming language",
+  "version": "0.1.0",
+  "publisher": "nils-sve",
+  "engines": {
+    "vscode": "^1.50.0"
+  },
+  "contributes": {
+    "grammars": [
+      {
+        "language": "dataflex",
+        "scopeName": "source.dataflex",
+        "path": "./syntaxes/dataflex.tmLanguage.json"
+      }
+    ],
+    "languages": [
+      {
+        "id": "dataflex",
+        "aliases": ["DataFlex", "df"],
+        "extensions": [".src", ".pkg", ".vw", ".bp", ".wo", ".dg", ".sl", ".inc", ".rv", ".dd"],
+        "configuration": "./language-configuration.json"
+      }
+    ]
+  }
+}

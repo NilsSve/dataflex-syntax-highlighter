@@ -43,7 +43,7 @@
     },
     {
       "name": "storage.type.dataflex",
-      "match": "\\b(String|Integer|Number|Date|Handle|Boolean|Pointer|UChar|WString|Variant|RowId)\\b"
+      "match": "\\b(String|Integer|Number|Date|Handle|Boolean|Pointer|UChar|WString|Variant|RowId|DWord|Real|Address|BitInt|Char|Currency|DateTime|Decimal|Float|LongPtr|Short|Time|TimeSpan|UBigInt|UInteger|ULongptr|Ushort)\\b"
     },
     {
       "name": "entity.name.function.dataflex",

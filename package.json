@@ -1,27 +1,34 @@
 {
   "name": "dataflex-syntax-highlighter",
-  "displayName": "DataFlex Syntax",
-  "description": "Syntax highlighting for the DataFlex programming language",
-  "version": "0.1.0",
-  "publisher": "nils-sve",
+  "displayName": "DataFlex Syntax Highlighter",
+  "description": "Syntax highlighting support for the DataFlex programming language.",
+  "version": "0.2.0",
+  "publisher": "nilssve",
   "engines": {
     "vscode": "^1.50.0"
   },
+  "categories": [
+    "Programming Languages"
+  ],
   "contributes": {
+    "languages": [
+      {
+        "id": "dataflex",
+        "aliases": ["DataFlex"],
+        "extensions": [".src", ".pkg", ".vw", ".dg", ".sl", ".bp", ".wo", ".inc", ".rv", ".dd"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
     "grammars": [
       {
         "language": "dataflex",
         "scopeName": "source.dataflex",
         "path": "./syntaxes/dataflex.tmLanguage.json"
       }
-    ],
-    "languages": [
-      {
-        "id": "dataflex",
-        "aliases": ["DataFlex", "df"],
-        "extensions": [".src", ".pkg", ".vw", ".bp", ".wo", ".dg", ".sl", ".inc", ".rv", ".dd"],
-        "configuration": "./language-configuration.json"
-      }
     ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NilsSve/dataflex-syntax-highlighter"
   }
 }

@@ -39,7 +39,7 @@
     },
     {
       "name": "keyword.control.dataflex",
-      "match": "\\b(If|Else|On_Key|#IFDEF|#IFNDEF|#ENDIF|Start_UI|Repeat|Until|Begin|End|Function|End_Function|Function_Return|Procedure|End_Procedure|Set_Attribute|Get_Attribute|Import_Class_Prococol|Procedure_Return|Object|Constrain|Constrained_Find|Reread|Lock|Add|Save_Record|Constrained_Clear|Constrained_Set|End_Object|Open|Broadcast|Class|End_Class|Move|Global_Variable|Declare_Datafile|Register_Function|Register_Procedure|Increment|Decrement|Error|Register_Object|Property|Destroy|Append|Name|Enum_List|End_Enum_List|Get|Set|Send|Struct|End_Struct|Define|to|of|from|Use|Abort|False|True|Loop|While|Forward|Case|Of|On|Do|For|Break|Return)\\b"
+      "match": "\\b(If|Else|On_Key|#IFDEF|#IFNDEF|#ENDIF|Start_UI|Repeat|Until|Begin|End|Function|End_Function|Function_Return|Procedure|End_Procedure|Set_Attribute|Get_Attribute|Import_Class_Prococol|Procedure_Return|Object|Constrain|Constrained_Find|Reread|Lock|Add|Save_Record|Constrained_Clear|Constrained_Set|End_Object|Open|Broadcast|Class|End_Class|Move|Global_Variable|Declare_Datafile|Register_Function|Register_Procedure|Increment|Decrement|Error|Register_Object|Property|Destroy|Append|Name|Enum_List|End_Enum_List|Get|Set|Send|Struct|End_Struct|Define|to|of|from|Use|Abort|False|True|Loop|While|Forward|Case|Of|On|Do|For|Break|Return|External_Function)\\b"
     },
     {
       "name": "storage.type.dataflex",

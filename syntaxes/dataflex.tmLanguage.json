@@ -1,85 +1,200 @@
 {
-  "name": "DataFlex",
-  "scopeName": "source.dataflex",
-  "fileTypes": [
-    "src",
-    "pkg",
-    "vw",
-    "bp",
-    "wo",
-    "dg",
-    "sl",
-    "inc",
-    "rv",
-    "dd"
-  ],
-  "patterns": [
-    {
-      "name": "comment.line.asterisk.dataflex",
-      "match": "^\\s*\\*.*$"
-    },
-    {
-      "name": "comment.line.double-slash.dataflex",
-      "match": "//.*$"
-    },
-    {
-      "name": "string.quoted.double.dataflex",
-      "begin": "\"",
-      "end": "\"",
-      "patterns": [
-        {
-          "name": "constant.character.escape.dataflex",
-          "match": "\\\\."
-        }
-      ]
-    },
-    {
-      "name": "string.quoted.multiline.dataflex",
-      "begin": "\"\"\"",
-      "end": "\"\"\"",
-      "patterns": [
-        {
-          "name": "constant.character.escape.dataflex",
-          "match": "\\\\."
-        }
-      ]
-    },
-    {
-      "name": "constant.numeric.dataflex",
-      "match": "\\b\\d+(\\.\\d+)?\\b"
-    },
-    {
-      "name": "keyword.control.dataflex",
-      "match": "\\b(If|Else|On_Key|#IFDEF|#IFNDEF|#ENDIF|Start_UI|Repeat|Until|Begin|End|Function|End_Function|Function_Return|Procedure|End_Procedure|Set_Attribute|Get_Attribute|Import_Class_Prococol|Procedure_Return|Object|Constrain|Constrained_Find|Reread|Lock|Add|Save_Record|Constrained_Clear|Constrained_Set|End_Object|Open|Broadcast|Class|End_Class|Move|Global_Variable|Declare_Datafile|Register_Function|Register_Procedure|Increment|Decrement|Error|Register_Object|Property|Destroy|Append|Name|Enum_List|End_Enum_List|Get|Set|Send|Struct|End_Struct|Define|to|of|from|Use|Abort|False|True|Loop|While|Forward|Case|Of|On|Do|For|Break|Return|External_Function)\\b"
-    },
-    {
-      "name": "storage.type.dataflex",
-      "match": "\\b(String|Integer|Number|Date|Handle|Boolean|Pointer|UChar|WString|Variant|RowId|DWord|Real|Address|BitInt|Char|Currency|DateTime|Decimal|Float|LongPtr|Short|Time|TimeSpan|UBigInt|UInteger|ULongptr|Ushort)\\b"
-    },
-    {
-      "name": "entity.name.function.dataflex",
-      "match": "\\b(Function|Procedure)\\s+\\w+"
-    },
-    {
-      "name": "meta.embedded.sql.dataflex",
-      "begin": "(?i)\\b(SQL|EXEC|SELECT|INSERT|UPDATE|DELETE)\\b",
-      "end": ";",
-      "patterns": [
-        {
-          "name": "keyword.other.sql",
-          "match": "\\b(SELECT|FROM|WHERE|AND|OR|INNER|JOIN|LEFT|RIGHT|ON|GROUP|BY|ORDER|INSERT|INTO|VALUES|UPDATE|SET|DELETE|EXEC)\\b"
-        },
-        {
-          "name": "string.quoted.single.sql",
-          "match": "'[^']*'"
-        },
-        {
-          "name": "constant.numeric.sql",
-          "match": "\\b\\d+(\\.\\d+)?\\b"
-        }
-      ]
-    }
-  ],
-  "repository": {},
-  "uuid": "d2c3f5c0-bd8e-4c8a-9962-3c17d9cfaa54"
+	"scopeName": "source.dataflex",
+	"name": "DataFlex",
+	"patterns": [
+		{
+			"match": "(//.*)",
+			"name": "comment.line.double-slash"
+		},
+		{
+			"match": "\\(",
+			"name": "string.unquoted"
+		},
+		{
+			"match": "\\)",
+			"name": "string.unquoted"
+		},
+		{
+			"match": "'.*?'",
+			"name": "string.quoted.single"
+		},
+		{
+			"begin": "\"",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.begin"
+				}
+			},
+			"end": "\"",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.string.end"
+				}
+			},
+			"name": "string.quoted.double"
+		},
+		{
+			"match": "(?i)\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)([LlFfUuDd]|UL|ul)?\\b",
+			"name": "constant.numeric"
+		},
+		{
+			"match": "(?i)\\b((End_Object|Cd_End_Object)\\b)",
+			"name": "constant.language"
+		},
+		{
+			"match": "(?i)External_Function(\\b\\w*\\b)",
+			"name": "constant.language",
+			"captures": {
+				"1": {
+					"name": "entity.name.function"
+				}
+			}
+		},
+		{
+			"match": "(?i)#COMMAND\\s(\\w*\\b)",
+			"name": "constant.language",
+			"captures": {
+				"1": {
+					"name": "entity.name.function"
+				}
+			}
+		},
+		{
+			"match": "(?i)\\b((Class\\s|Object\\s)(\\w*\\b)(\\s*\\w*\\b){3})",
+			"name": "constant.language",
+			"captures": {
+				"3": {
+					"name": "entity.name.function"
+				},
+				"4": {
+					"name": "entity.name.function"
+				}
+			}
+		},
+		{
+			"match": "(?i)\\b(Struct\\s(\\w*\\b))",
+			"name": "constant.language",
+			"captures": {
+				"2": {
+					"name": "entity.name.function"
+				}
+			}
+		},
+		{
+			"match": "(?i)\\b(CD_Popup_Object\\s(\\w*\\b)(\\s*\\w*\\b){3})",
+			"name": "constant.language",
+			"captures": {
+				"2": {
+					"name": "entity.name.function"
+				}
+			}
+		},
+		{
+			"match": "(?i)\\b(HCSS_CD_Object\\s(\\w*\\b)(\\s*\\w*\\b){3})",
+			"name": "constant.language",
+			"captures": {
+				"2": {
+					"name": "entity.name.function"
+				}
+			}
+		},
+		{
+			"match": "(?i)\\b((Procedure|Procedure_Section|Function|End_Procedure|End_Function)\\b)",
+			"name": "constant.language"
+		},
+		{
+			"match": "(?i)\\b((End_Class)\\b)",
+			"name": "constant.language"
+		},
+		{
+			"match": "(?i)\\b((Number|Integer|String|Boolean|Date|Handle|DateTime|Real|Variant|RowId|Address|BigInt|Char|Currency|DateTime|Decimal|DWord|Float|Longptr|Pointer|Short|Time|TimeSpan|UBigInt|Uchar|UInteger|ULongptr|UShort|WString)\\b)",
+			"name": "storage.type"
+		},
+		{
+			"match": "(?i)\\b((End_Struct|Begin_Row|End_Row|Enumeration_List|End_Enumeration_List)\\b)",
+			"name": "constant.language"
+		},
+		{
+			"match": "(?i)\\b((Case|Property)\\b)",
+			"name": "constant.language"
+		},
+		{
+			"match": "(?i)\\b((Constrain|Constraint_Set|Constrained_Find)\\b)",
+			"name": "constant.language"
+		},
+		{
+			"match": "(?i)\\b((Use|Send|WebSet|WebGet|WebPublishProcedure|WebPublishFunction|WebSetResponsive|WebRegisterPath|Sysdate|Get|Set|Index|Clear|Open|Close|Relate|Find|Move|Showln|Found|On_Key|Increment|Entry_Item|Add|Register_Object|Register_Function|Register_Procedure|Import_Class_Protocol)\\b)",
+			"name": "constant.language"
+		},
+		{
+			"match": "(?i)\\b((Procedure_Return|Forward|Function_Return|Begin|End|While|Repeat|Loop|If|Else|For_All|End_For_All|\\w*Deferred_View|Until|Delegate)\\b)",
+			"name": "constant.language"
+		},
+		{
+			"match": "(?i)\\b((False|True|Self)\\b)",
+			"name": "constant.language"
+		},
+		{
+			"match": "(?i)\\b((Write|Writeln|Left|Right|Mid|For|Runprogram|shell|Close_Output|Direct_Output|Ordering|Define|ByRef)\\b)",
+			"name": "constant.language"
+		},
+		{
+			"match": "(?i)\\b((SaveRecord|Unlock|Reread|Repeat)\\b)",
+			"name": "constant.language"
+		},
+		{
+			"match": "(?i)\\b((eq|ge|gt|le|=|&lt;|&gt;|ne|&lt;&gt;|&gt;=|&lt;=|and|or|lt)\\b)",
+			"name": "keyword.operator.comparison"
+		},
+		{
+			"match": "(?i)\\b((for|is|a|to|do|continue|rgb|of|by|from)\\b)",
+			"name": "keyword.other"
+		},
+		{
+			"match": "(?i)\\b((not)\\b)",
+			"name": "keyword.other.booleanreverse"
+		},
+		{
+			"match": "(?i)\\b((Enum_List|End_Enum_List|Get_Argument_Size|Get_Attribute|Set_Attribute)\\b)",
+			"name": "constant.language"
+		},
+		{
+			"match": "(?i)\\b(({|})\\b)",
+			"name": "string.quoted.other" 
+		},
+		{
+			"begin": "{",
+			"beginCaptures": {
+				"0": {
+					"name": "string.quoted.other"
+				}
+			},
+			"end": "(=\\s*([^}]+))}",
+			"endCaptures": {
+				"1": {
+					"name": "entity.name.metadata"
+				}
+			},
+			"name": "string.quoted.other"
+		},
+		{
+			"begin": "/\\*",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.comment.begin"
+				}
+			},
+			"end": "\\*/",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.comment.end"
+				}
+			},
+			"name": "comment.block"
+		},
+		{
+			"match": "(-|\\+|\\*|\\/|%)",
+			"name": "keyword.operator.arithmetic"
+		}
+	]
 }
